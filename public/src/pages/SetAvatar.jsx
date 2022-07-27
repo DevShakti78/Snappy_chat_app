@@ -23,7 +23,7 @@ function SetAvatar() {
 useEffect(() => {
   async function fetchData() {
     try {
-      if(!localStorage.getItem("chatapp-user")){
+      if(!localStorage.getItem("chat-app-user")){
         navigate("/login")
       }
     } catch (e) {
@@ -42,14 +42,14 @@ const setProfilePictures = async () =>{
     toast.error("please select the avatar", toastOptions)
   }
   else{
-    const user = await JSON.parse(localStorage.getItem("chatapp-user"))
+    const user = await JSON.parse(localStorage.getItem("chat-app-user"))
   const {data} = await axios.post(`${setAvatarRoute}/${user._id}`,{
     image: avatar[selectedAvatar]
   });
   if(data.isSet){
     user.isAvatarImageSet = true;
     user.avatarImage = data.image;
-    localStorage.setItem("chatapp-user",JSON.stringify(user));
+    localStorage.setItem("chat-app-user",JSON.stringify(user));
     navigate("/")
   }
   else{

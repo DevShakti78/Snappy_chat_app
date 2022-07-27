@@ -23,7 +23,7 @@ const toastOptions = {
 }
 
 useEffect(() => {
-    if(localStorage.getItem("chatapp-user")){
+    if(localStorage.getItem("chat-app-user")){
       navigate("/")
     }
   },[])
@@ -41,7 +41,7 @@ if(handleValidation()){
         toast.error(data.message,toastOptions)
     }
     if(data.status===true){
-        localStorage.setItem("chatapp-user",JSON.stringify(data.user))
+        localStorage.setItem("chat-app-user",JSON.stringify(data.user))
         navigate("/")
     }
 
